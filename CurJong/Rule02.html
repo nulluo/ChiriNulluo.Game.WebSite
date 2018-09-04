@@ -7,13 +7,13 @@
 </head>
 <body>
     <header>
-        <img src="TopTitle.png" alt="キュアジャンタイトルロゴ" />
+        <a href="index.html"><img src="TopTitle.png" alt="キュアジャンタイトルロゴ"/></a>
         <nav>
             <ul>
                 <li><a href="Rule01.html">遊び方</a></li>
-                <li><a href="">ダウンロード</a></li>
-                <li><a href="">動作環境</a></li>
-                <li><a href="">リンク</a></li>
+                <li><a href="Download.html">ダウンロード</a></li>
+                <li><a>動作環境</a></li>
+                <li><a href="Link.html">リンク</a></li>
             </ul>
         </nav>    
     </header>
@@ -21,20 +21,248 @@
     <main>
         <nav id="RuleMenu">
             <h1>遊び方 目次</h1>
-            <ul>
+            <ol>
                 <li><a href="Rule01.html">遊び方(基本)</a></li>
                 <li><a href="Rule02.html">牌(はい)について</a></li>
                 <li><a href="Rule03.html">手の作り方</a></li>
-                <li><a href="Rule04.html">役の一覧</a></li>
-                <li><a href="Rule04.html">ロン・ポン・チー</a></li>
-            </ul>
+                <li><a href="Rule04.html">役について</a></li>
+                <li><a>ロン・ポン・チー</a></li>
+                <li><a>ボーナス牌</a></li>
+                <li><a>リーチ</a></li>
+                <li><a>フリテン</a></li>                
+                <li><a>試合の流れ</a></li>                
+            </ol>
         </nav>
 
         <div id="Rule">
             <article>
                 <h1>牌(はい)について</h1>
-                
+                <h2>牌(はい）の見方</h2>
+                <img src="TileExplanation1.png">
+                <p>ゲームを遊ぶときは、上図のような牌を使用します。</p>
+                <div class="left-face">
+                    <img src="WebFace_Riko1.png">
+                </div>
+                <div class="talking-Message Riko">
+                    それぞれの牌は「キャラクター名」と「作品」、それから「数字」。
+                    この３つを持っているってことね。
+                </div>
+                <div class="end-talk"></div>
+                <br />
 
+                <img src="TileExplanation2.png">
+                <p>各作品ごとに、登場するプリキュアに連番で数字を割り振っています。<br />
+                   例）野乃はな：1、　薬師寺さあや：2、　輝木ほまれ：3
+                </p>
+
+                <div class="left-face">
+                        <img src="WebFace_Mirai1.png" >
+                </div>
+                <div class="talking-Message Mirai">
+                        キュアジャンでは「ふたりはプリキュアMaxHeart」から「Hugっと！プリキュア」まで
+                        のキャラクターの牌を使って遊ぶよ。
+                </div>
+                <div class="end-talk"></div>
+    
+
+
+                <h2>牌の種類</h2>    
+                <div><img src="TileExplanation3.png"></div>
+
+                <div class="left-face">
+                        <img src="WebFace_Mirai1.png" >
+                </div>
+                <div class="talking-Message Mirai">
+                        牌は大きく分けて２種類の牌があるよ。それが通常牌とボーナス牌だね。<br />
+                        通常牌はプリキュアが描かれている牌。<br />
+                        ボーナス牌はプリキュアの敵キャラ、味方キャラなどのサブキャラが描かれた牌なんだ。<br />
+                </div>
+                <div class="end-talk"></div>
+
+                <div class="left-face">
+                        <img src="WebFace_Riko1.png">
+                </div>
+                <div class="talking-Message Riko">
+                    ボーナス牌には金色の枠がついてるから、それで区別してね。ボーナス牌には通常牌と違う特殊なルールがあるけど、
+                    それについては<a>後</a>で説明するから今は覚えなくてもいいわ！<br />
+                           
+                    それでは、キュアジャンで使う牌を１つずつ見ていきましょう！
+                </div>
+                <div class="end-talk"></div>
+
+                <h2>牌の一覧</h2>
+                <dl id="TilesBySeries">
+                    <dt>●ふたりはプリキュアMaxHeart</dt>
+                    <dd><img src="TilesBySeries\Tiles01_MH.png"></dd>
+
+                    <dt>●ふたりはプリキュアSplashStar</dt>
+                    <dd><img src="TilesBySeries\Tiles02_SS.png"></dd>
+
+                    <dt>●Yes!プリキュア5gogo!</dt>
+                    <dd><img src="TilesBySeries\Tiles03_5.png"></dd>
+
+                    <dt>●フレッシュプリキュア！</dt>
+                    <dd><img src="TilesBySeries\Tiles04_Fresh.png"></dd>
+
+                    <dt>●ハートキャッチプリキュア！</dt>
+                    <dd><img src="TilesBySeries\Tiles05_HeartCatch.png"></dd>
+
+                    <dt>●スイートプリキュア♪</dt>
+                    <dd><img src="TilesBySeries\Tiles06_Suite.png"></dd>
+
+                    <dt>●スマイルプリキュア！</dt>
+                    <dd><img src="TilesBySeries\Tiles07_Smile.png"></dd>
+
+                    <dt>●ドキドキ！プリキュア</dt>
+                    <dd><img src="TilesBySeries\Tiles08_DokiDoki.png"></dd>
+
+                    <dt>●ハピネスチャージプリキュア！</dt>
+                    <dd><img src="TilesBySeries\Tiles09_HapinessCharge.png"></dd>
+
+                    <dt>●Go!プリンセスプリキュア</dt>
+                    <dd><img src="TilesBySeries\Tiles10_GoPrincess.png"></dd>
+
+                    <dt>●魔法つかいプリキュア!</dt>
+                    <dd><img src="TilesBySeries\Tiles11_Maho.png"></dd>
+
+                    <dt>●キラキラ☆プリキュアアラモード</dt>
+                    <dd><img src="TilesBySeries\Tiles12_Kirakira.png"></dd>
+
+                    <dt>●ＨＵＧっと！プリキュア</dt>
+                    <dd><img src="TilesBySeries\Tiles13_Hug.png"></dd>
+
+                    <dt>●明日のナージャ</dt>
+                    <dd><img src="TilesBySeries\Tiles00_Nadja.png"></dd>
+
+                </dl>
+                <div class="left-face">
+                        <img src="WebFace_Mirai1.png" >
+                </div>
+                <div class="talking-Message Mirai">
+                        作品によって、ボーナス牌を含む作品と、含まない作品があるんだね。<br />
+                        ボーナス牌を含まない作品は数字が1から始まるけど、ボーナス牌を含む作品は数字が0から始まるんだ！
+                </div>
+                <div class="end-talk"></div>
+    
+                <div class="left-face">
+                    <img src="WebFace_Riko1.png">
+                </div>
+                <div class="talking-Message Riko">
+                    その通りよ、みらい。分かりやすいように表にしてみたわ。
+                </div>
+                <div class="end-talk"></div>
+
+                <table class="tableType1">
+                            <tr>
+                              <th ></th>
+                              <th>通常牌の番号</th>
+                              <th colspan="2">ボーナス牌の番号</th>
+                            </tr>
+                            <tr>
+                              <td>ふたりはプリキュアMaxHeart&lt;</td>
+                              <td>1～3</td>
+                              <td>なし</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>ふたりはプリキュアSplashStar</td>
+                              <td>1～2</td>
+                              <td>0</td>
+                              <td>3</td>
+                            </tr>
+                            <tr>
+                              <td>Yes!プリキュア5gogo!</td>
+                              <td>1～6</td>
+                              <td>0</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>フレッシュプリキュア！</td>
+                              <td>1～4</td>
+                              <td>0</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>ハートキャッチプリキュア！</td>
+                              <td>1～4</td>
+                              <td>0</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>スイートプリキュア♪</td>
+                              <td>1～4</td>
+                              <td>0</td>
+                              <td>5</td>
+                            </tr>
+                            <tr>
+                              <td>スマイルプリキュア！</td>
+                              <td>1～5</td>
+                              <td>0</td>
+                              <td>6</td>
+                            </tr>
+                            <tr>
+                              <td>ドキドキ！プリキュア</td>
+                              <td>1～5</td>
+                              <td>0</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>ハピネスチャージプリキュア！</td>
+                              <td>1～4</td>
+                              <td>0</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>Go!プリンセスプリキュア</td>
+                              <td>1～4</td>
+                              <td>なし</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>魔法つかいプリキュア!</td>
+                              <td>1～3</td>
+                              <td>なし</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>キラキラ☆プリキュアアラモード</td>
+                              <td>1～6</td>
+                              <td>なし</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>ＨＵＧっと！プリキュア</td>
+                              <td>1～3</td>
+                              <td>なし</td>
+                              <td></td>
+                            </tr>
+                            <tr>
+                              <td>明日のナージャ</td>
+                              <td>なし</td>
+                              <td>※</td>
+                              <td></td>
+                            </tr>
+                          </table>
+                <p>※明日のナージャはボーナス牌のなかでも特別で、この牌だけは数字をもちません。</p>
+
+                <div class="left-face">
+                    <img src="WebFace_Mirai1.png" >
+                </div>
+                <div class="talking-Message Mirai">
+                    さあ、どんな牌があるのかは覚えたよリコ！早く遊び方を教えて！
+                </div>
+                <div class="end-talk"></div>
+    
+                <div class="left-face">
+                    <img src="WebFace_Riko1.png">
+                </div>
+                <div class="talking-Message Riko">
+                    よし、それじゃあ、次はいよいよ「手の作り方」を教えるわよ！
+                </div>
+                <div class="end-talk"></div>
+
+                <p class="next-back-link"><a href="Rule01.html"> ← 1.遊び方(基本)</a>　　[2/6]　　<a href="Rule03.html">4.手の作り方 → </a></p>    
+                
             </article>
         </div>
     </main>
