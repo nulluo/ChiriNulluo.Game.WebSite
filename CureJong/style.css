@@ -5,17 +5,27 @@ body{
  
 }
 
-h1 {
+h1{
     margin-top:0;
+    padding-left:5px;
+    background-color: darkgreen;
+    color:white;
+    border-top:solid 5px #bac705;
+    border-bottom:solid 5px #bac705;
+    
+}
+
+h2 {
+    margin-top:20;
     padding-left:5px;
     border-left:solid 5px #15278a;
     border-bottom:solid 1px #15278a;
 }
 
-h2 {
+/* h2 {
     margin-top:0;
     border-top:solid 1px #aaaaaa;
-}
+} */
 
 /* header */
 header{
@@ -161,11 +171,13 @@ nav#RuleMenu{
     margin:0px;
 }
 
-.Yaku.Special h3{
+.Yaku.Special h3,
+.Yaku.AllSeries h3{
     background-color: aquamarine;
 }
 
-.Yaku.ZeninShugo h3{
+.Yaku.ZeninShugo h3,
+.Yaku.AllColor  h3{
     background-color: darkslategray;
     color:white;
 }
