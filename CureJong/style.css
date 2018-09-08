@@ -18,7 +18,7 @@ h2 {
 
 /* header */
 header{
-    background: #ffffff;
+    background:  linear-gradient(rgb(0, 180, 24), rgb(255, 255, 255));
     border-bottom : solid 1px #aaaaaa;
     margin-left:auto;
     margin-right:auto;
@@ -52,14 +52,19 @@ header nav ul  {
 
 header nav li {
     display: inline;
+    background-color: white;
     font-size: 16px;
-    border-right: solid 1px #aaaaaa;
-    padding-left: 10px;
-    padding-right:10px;
+    border-top:solid 3px #aaaaaa;
+    border-right: solid 3px #aaaaaa;
+    border-top-left-radius: 10px;
+    border-top-right-radius:10px;
+    padding-top:10px;
+    padding-left:30px;
+    padding-right:30px;
 }
 
 header nav li:first-child{
-    border-left:solid 1px #aaaaaa
+    border-left:solid 3px #aaaaaa
 }
 
 header nav{
@@ -68,6 +73,19 @@ header nav{
     margin-right: auto;
     text-align: right;
     margin-top: -32px;
+}
+
+header nav li:hover{
+    background-color: mediumseagreen;
+}
+
+
+/*現在表示中のページのタブを色変更する*/
+body.RulePage header nav .RulePage,
+body.DLPage header nav .DLPage,
+body.EnvironmentPage header nav .EnvironmentPage,
+body.LinkPage header nav .LinkPage{
+    background-color:  rgb(70, 252, 146);
 }
 
 /*遊び方*/
@@ -91,8 +109,6 @@ div.next-link{
     margin-bottom:20px;
     padding-right:120px;
 }
-
-
 div.back-link{
     font-weight: bolder;
     width:269px;
@@ -102,7 +118,6 @@ div.back-link{
     margin-bottom:20px;
     padding-left:120px;
 }
-
 div.page-counter{
     font-weight: bolder;
     width:100px;
@@ -111,7 +126,6 @@ div.page-counter{
     margin-top:20px;
     margin-bottom:20px;
 }
-
 div.float-reset{
     clear:both;
 }
