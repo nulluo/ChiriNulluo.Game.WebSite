@@ -36,23 +36,30 @@
 
         <div id="Rule">
             <article>
-                <h1>・役について</h1>
+                <h1>役について</h1>
                 <p>一定の条件を満たして上がると、役をつくることができます。
                 それぞれの役には、上がりやすさに応じて得点が設定されており、上がった人は役に応じた得点を獲得します。</p>
-                <h2>役の例(一部)</h2>
-                <h3>(1) 〇〇(作品名)全員集合！･･･同じ作品のキャラを全て揃える</h3>
-                <img src="RuleImage05.gif" alt="「5GoGo!全員集合！」と「まほプリ全員集合！」の複合役" />
-                <p>▲ 「5GoGo!全員集合！」と「まほプリ全員集合！」の複合役</p>
 
-                <h3>(2) 〇〇キュア一色･･･同じカラーのプリキュアで揃える</h3>
-                <img src="RuleImage06.gif" alt="「オールブルー」" />
-                <p>▲ 「青キュア一色」</p>
+                <h2>役の分類</h2>
+                <dl id="YakuType">
+                    <dt>・●●[作品名]全員集合!</dt>
+                    <dd>特定の作品のプリキュアを全て集める役です。</dd>
+
+                    <dt>・オール●●[作品名]</dt>
+                    <dd>手牌が全て特定の作品のキャラになっている役です。</dd>
+
+                    <dt>・オール●●[色名]キュア</dt>
+                    <dd>手牌が全て特定の色のキャラになっている役です。</dd>
+
+                    <dt>・特殊役</dt>
+                    <dd>上記に当てはまらない特殊な役です。</dd>
+                </dl>
 
                 <div class="left-face">
-                    <img src="WebFace_Mirai1.png" >
+                <img src="WebFace_Mirai1.png" >
                 </div>
                 <div class="talking-Message Mirai">
-                    他にはどんな役があるの？教えてよーリコ～！     
+                    キュアジャンには4種類も役があるんだね。覚えるの大変じゃない？    
                 </div>
                 <div class="end-talk"></div>
 
@@ -60,9 +67,135 @@
                     <img src="WebFace_Riko1.png">
                 </div>
                 <div class="talking-Message Riko">
-                    すべての役のリストは現在作成中です！じ、次回の更新まで、もうちょっと待っててください！
+                    そうでもないわ。特殊役を除けば<strong>「１．一つの作品のプリキュアを全て集める」「２．手牌を全て一つの作品に統一する」「３．手牌を全て同じ色のキャラに統一する」</strong>
+                    この３つの原則だけ覚えておけば役が作れるわ。そして、特殊役は数が少ないから、みらいならすぐ覚えられるわよ。
                 </div>
                 <div class="end-talk"></div>
+
+                <div class="left-face">
+                <img src="WebFace_Mirai1.png" >
+                </div>
+                <div class="talking-Message Mirai">
+                    がんばって覚えちゃおう！   
+                </div>
+                <div class="end-talk"></div>
+                <br />
+
+                <h2>役一覧 (●●[作品名]全員集合!)</h2>
+
+                <div class="Yaku ZeninShugo">
+                        <h3>MaxHeart全員集合！</h3>
+                        <h4>役の成立条件:手牌に作品「ふたりはプリキュアMaxHeart」のプリキュアが全て含まれている</h4>
+                        <img src="Yaku/Yaku03_MHZeninShugo.png">
+                        <div class="YakuPoint"><p>得点:500点</p></div>
+                </div>
+
+                <div class="Yaku ZeninShugo">
+                        <h3>SplashStar全員集合！</h3>
+                        <h4>役の成立条件:手牌に作品「ふたりはプリキュアSplashStar」のプリキュアが全て含まれている</h4>
+                        <img src="Yaku/Yaku04_SSZeninShugo.png">
+                        <div class="YakuPoint"><p>得点:3000点</p></div>
+                </div>
+
+                <div class="Yaku ZeninShugo">
+                        <h3>5gogo!全員集合！</h3>
+                        <h4>役の成立条件:手牌に作品「Yes!プリキュア5gogo!」のプリキュアが全て含まれている</h4>
+                        <img src="Yaku/Yaku05_5ZeninShugo.png">
+                        <div class="YakuPoint"><p>得点:1000点</p></div>
+                </div>
+
+                <div class="Yaku ZeninShugo">
+                        <h3>フレッシュ全員集合！</h3>
+                        <h4>役の成立条件:手牌に作品「フレッシュプリキュア！」のプリキュアが全て含まれている</h4>
+                        <img src="Yaku/Yaku06_FreshZeninShugo.png">
+                        <div class="YakuPoint"><p>得点:1000点</p></div>
+                </div>
+
+                <div class="Yaku ZeninShugo">
+                        <h3>ハートキャッチ全員集合！</h3>
+                        <h4>役の成立条件:手牌に作品「ハートキャッチプリキュア！」のプリキュアが全て含まれている</h4>
+                        <img src="Yaku/Yaku07_HeartCatchZeninShugo.png">
+                        <div class="YakuPoint"><p>得点:1000点</p></div>
+                </div>
+
+                <div class="Yaku ZeninShugo">
+                        <h3>スイート全員集合！</h3>
+                        <h4>役の成立条件:手牌に作品「スイートプリキュア♪」のプリキュアが全て含まれている</h4>
+                        <img src="Yaku/Yaku08_SuiteZeninShugo.png">
+                        <div class="YakuPoint"><p>得点:1000点</p></div>
+                </div>
+
+                <div class="Yaku ZeninShugo">
+                        <h3>スマイル全員集合！</h3>
+                        <h4>役の成立条件:手牌に作品「スマイルプリキュア！」のプリキュアが全て含まれている</h4>
+                        <img src="Yaku/Yaku09_SmileZeninShugo.png">
+                        <div class="YakuPoint"><p>得点:1000点</p></div>
+                </div>
+
+                <div class="Yaku ZeninShugo">
+                        <h3>ドキドキ！全員集合！</h3>
+                        <h4>役の成立条件:手牌に作品「ドキドキ！プリキュア」のプリキュアが全て含まれている</h4>
+                        <img src="Yaku/Yaku10_DokiDokiZeninShugo.png">
+                        <div class="YakuPoint"><p>得点:1000点</p></div>
+                </div>
+
+                <div class="Yaku ZeninShugo">
+                        <h3>ハピネスチャージ全員集合！</h3>
+                        <h4>役の成立条件:手牌に作品「ハピネスチャージプリキュア！」のプリキュアが全て含まれている</h4>
+                        <img src="Yaku/Yaku11_HappinessChargeZeninShugo.png">
+                        <div class="YakuPoint"><p>得点:1000点</p></div>
+                </div>
+
+                <div class="Yaku ZeninShugo">
+                        <h3>Go!プリンセス全員集合！</h3>
+                        <h4>役の成立条件:手牌に作品「Go!プリンセスプリキュア」のプリキュアが全て含まれている</h4>
+                        <img src="Yaku/Yaku12_GoPrincessZeninShugo.png">
+                        <div class="YakuPoint"><p>得点:1000点</p></div>
+                </div>
+
+                <div class="Yaku ZeninShugo">
+                        <h3>魔法つかい全員集合！</h3>
+                        <h4>役の成立条件:手牌に作品「魔法つかいプリキュア!」のプリキュアが全て含まれている</h4>
+                        <img src="Yaku/Yaku13_MahoTsukaiZeninShugo.png">
+                        <div class="YakuPoint"><p>得点:500点</p></div>
+                </div>
+
+                <div class="Yaku ZeninShugo">
+                        <h3>プリアラ全員集合！</h3>
+                        <h4>役の成立条件:手牌に作品「キラキラ☆プリキュアアラモード」のプリキュアが全て含まれている</h4>
+                        <img src="Yaku/Yaku14_KiraPreZeninShugo.png">
+                        <div class="YakuPoint"><p>得点:1000点</p></div>
+                </div>
+                
+                <div class="Yaku ZeninShugo">
+                    <h3>Hugプリ全員集合！</h3>
+                    <h4>役の成立条件:手牌に作品「ＨＵＧっと！プリキュア」のプリキュアが全て含まれている</h4>
+                    <img src="Yaku/Yaku15_HuguttoZeninShugo.png">
+                    <div class="YakuPoint"><p>得点:500点</p></div>
+                </div>
+
+
+
+
+
+                
+                <h2>役一覧 (特殊役)</h2>
+
+                <div class="Yaku Special">
+                    <h3>プリキュアオールスターズDX</h3>
+                    <h4>役の成立条件:手牌に以下の牌が全て含まれている</h4>
+                    <img src="Yaku/Yaku01_ASDX.png">
+                    <div class="YakuPoint"><p>得点:10000点</p></div>
+                    <p>※映画「プリキュアオールスターズDX（パート１）」に登場したキャラを全て揃えます</p>
+                </div>
+
+                <div class="Yaku Special">
+                    <h3>プリキュアドリームスターズ！</h3>
+                    <h4>役の成立条件:手牌に以下の牌が全て含まれている</h4>
+                    <img src="Yaku/Yaku02_DreamStars.png">
+                    <div class="YakuPoint"><p>得点:9000点</p></div>
+                    <p>※映画「プリキュアドリームスターズ」に登場したキャラを全て揃えます</p>
+                </div>
 
                 <div class="back-link"><a href="Rule03.html">← 3.手の作り方</a>　</div>
                 <div class="page-counter">[4/9]</div>
