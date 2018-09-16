@@ -205,24 +205,73 @@ nav#RuleMenu{
 /*キャラクター台詞 */
 div.left-face{
     float:left;
-    margin-right:15px;
+    margin-right:20px;
+    margin-bottom:0px;
+    margin-top:0px;
+}
+
+div.left-face>img{
+    border:2px solid #666666;
 }
 
 div.talking-Message{
     padding:10px;
+    float:left;
+    width:736px;
+    position:relative;
+    border-radius: 10px;
+    margin-bottom:10px;
+
 }
+
+/*吹き出しのトゲをつくる*/
+.talking-Message:before{
+    content:"";
+    position:absolute;
+    top: 50%;
+    left: -22px;
+    margin-top:-12px; 
+    border:11px solid transparent;
+    z-index:2;
+    
+}
+.talking-Message:after{
+    content:"";
+    position : absolute;
+    top: 50%;
+    left: -32px;
+    margin-top:-17px;
+    border:16px solid transparent;
+    z-index:1;
+} 
+
+.talking-Message.Mirai:before{ 
+    border-right:11px solid rgb(252, 242, 102);
+}
+.talking-Message.Mirai:after{
+    border-right:16px solid rgb(133, 124, 0);
+} 
+
+.talking-Message.Riko:before{
+    border-right:11px solid rgb(185, 180, 255);
+}
+.talking-Message.Riko:after{
+    border-right:16px solid rgb(43, 2, 41);
+} 
+
 
 div.end-talk{
     clear:both;
 }
 
-/*　'UNIMPLEMENTED: みらいの台詞は黄色背景、リコの台詞は紫背景で表示したい*/
-.talking-message, .Mirai{
+.talking-Message.Mirai{
     background-color: rgb(252, 242, 102);
+    border:3px solid rgb(133, 124, 0);
 }
 
-.talking-message, .Riko{
-    background-color: rgba(185, 180, 255, 0.932);
+.talking-Message.Riko{
+    background-color: rgba(185, 180, 255);
+    border:3px solid rgb(43, 2, 41);
 }
 
 /* 表 */
