@@ -243,6 +243,10 @@ div.talking-Message{
     margin-top:-17px;
     border:16px solid transparent;
     z-index:1;
+
+    /* 'UNIMPLEMENTED:  */
+    /* なぜか、この方法ではfloat:leftをリセットできない
+    clear:both; 吹き出し会話モードが終わったため、float状態をオフに戻す */
 } 
 
 .talking-Message.Mirai:before{ 
