@@ -290,3 +290,11 @@ table.tableType1 th{
 table.tableType1 td{
     border:solid 1px #aaaaaa;
 }
+
+/*ダウンロード*/
+.DLPage .DLLink{
+    /* font-weight:bolder; */
+    font-size: 2em;
+    /* margin:100px; */
+   
+}
