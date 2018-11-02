@@ -300,6 +300,7 @@ table.tableType1 td{
 }
 
 div#ChangeLog {
+    padding:3px;
     width: 1000px;
     height: 200px;
     border:solid 2px #4d4b46;
