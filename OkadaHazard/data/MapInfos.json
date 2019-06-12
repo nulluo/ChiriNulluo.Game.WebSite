@@ -1,0 +1,17 @@
+[
+null,
+{"id":1,"expanded":false,"name":"メインマップ大貝町","order":2,"parentId":7,"scrollX":1165.2,"scrollY":648.6},
+{"id":2,"expanded":false,"name":"MAP002","order":9,"parentId":0,"scrollX":1080,"scrollY":599},
+null,
+null,
+{"id":5,"expanded":true,"name":"OP④/ED(研究室)","order":6,"parentId":14,"scrollX":1080,"scrollY":599},
+{"id":6,"expanded":false,"name":"OP②大統領官邸","order":4,"parentId":14,"scrollX":1064,"scrollY":599},
+{"id":7,"expanded":false,"name":"大貝町（EV貼付前）","order":1,"parentId":0,"scrollX":1860,"scrollY":2929},
+null,
+null,
+null,
+{"id":11,"expanded":false,"name":"OP③(円邸)","order":5,"parentId":14,"scrollX":1080,"scrollY":599},
+{"id":12,"expanded":false,"name":"OP⑤(大貝町)","order":7,"parentId":14,"scrollX":1080,"scrollY":599},
+{"id":13,"expanded":false,"name":"EDロール","order":8,"parentId":0,"scrollX":1080,"scrollY":599},
+{"id":14,"expanded":true,"name":"OP①(黒画面)","order":3,"parentId":0,"scrollX":1080,"scrollY":599}
+]
