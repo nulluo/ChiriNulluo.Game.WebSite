@@ -1,29 +1,82 @@
-﻿//=============================================================================
-// UCHU_MobileOperation.js
-// Version: 1.1.4
+//=============================================================================
+// UCHU_MobileOperation_Modified.js
+// Version: 1.2
 //----------------------------------------------------------------------------
-// Copyright (c) 2015 uchuzine
+// Copyright (c) 2015-2017 uchuzine, NAK
 // Released under the MIT license
 // http://opensource.org/licenses/mit-license.php
 //=============================================================================
 
 /*:
 @plugindesc
-スマホ操作用プラグイン。横持ち/縦持ちに対応した仮想ボタン、
+(Modified)スマホ操作用プラグイン。横持ち/縦持ちに対応した仮想ボタン、
 タッチ操作の方法を追加拡張し、スマホプレイを快適にします。
 @author
-uchuzine
+uchuzine (modified by NAK)
 @help
-UCHU_MobileOperation (Version: 1.1.4)
+UCHU_MobileOperation_Modified (Version: 1.2)
 ------------------------------------------------------------------------------
 ■更新履歴
 ------------------------------------------------------------------------------
+
+↓------この更新履歴はUCHU_MobileOperation_Modified.jsのものです------↓
+
+1.2 2018/1/26
+
+・HideButton Switchオプションが有効である時に非表示にすると、
+　透過度を0にして完全に見えなくするようにしました。
+
+1.1 2018/1/5
+
+・HideButton OnMessageが有効であっても、コモンイベントの「文章の表示」に反応しない問題の修正。
+
+1.0 2018/1/4
+
+改変の度合いが大きいのでバージョンを見直しました。
+UCHU_MobileOperation_Modified.jsにリネームしました。
+
+・MVコアスクリプト1.5.0のプラグインパラメータを設定して
+　多少使いやすくしました。
+　小数点以下3桁までを有効にしてあります。
+　仮想パッドの画像ファイルはimg/systemフォルダに入れて下さい。
+　拡張子がすべて小文字でないとエラーが出ます。
+
+・Chromeのバージョンによってはフリック操作でコンソールにエラーが出るので
+　下記Qiita記事を参考に抑制しました。
+　https://qiita.com/ru_shalm/items/4d79e94b5d9c7c88607d
+
+・HideButton OnMessageのメモリリーク問題に対応しました。
+　参考）
+　https://qiita.com/EudyptesCapital/items/d4a76d665b038e027638
+　https://tm.lucky-duet.com/viewtopic.php?t=371
+
+・HideButton Switchオプションを追加しました。
+　マップ画面(Scene_Map)／バトル画面(Scene_Battle)において、
+　指定した番号のスイッチによって、仮想パッドの表示を切り替えます。
+　この表示状態は他の画面(Scene)でも持ち越されます。
+（マップ画面で非表示にしたままバトル画面(Scene_Battle)に移行すると、
+　バトルでも表示されない）
+　この機能を有効にすると、HideButton OnMessageは機能しません。
+（HideButton OnMessageをtrueにしても、スイッチがOFFだと隠れない）
+
+・HideButton Switch Valueオプションの追加。
+　ここで設定した値の時、仮想パッドが表示されます。
+　HideButtonSwitchが10の時、
+　このオプションをtrueに設定する：
+　10番のスイッチがオンの時に表示、オフの時に非表示
+　このオプションをfalseに設定する：
+　10番のスイッチがオフの時に表示、オンの時に非表示
+
+↓------この更新履歴はUCHU_MobileOperation.jsのものです------↓
+
 1.1.4 2015/12/04  画面下部メッセージ表示後に下記の問題が再発する不具合を修正
 1.1.3 2015/11/29  画面左上にボタンを設置した際にボタンが押せない不具合を修正
 1.1.2 2015/11/24  パラメータを変更できない不具合を修正
 1.1.1 2015/11/23  PC上での仮想ボタン操作時の不具合を修正
 1.1.0 2015/11/17  「AnalogMove.js」使用時のアナログ移動に対応。下記説明を参照
 1.0.0 2015/11/15 プラグイン公開
+
+↓------以下の説明はUCHU_MobileOperation.jsのものです------↓
 
 ------------------------------------------------------------------------------
 ■特徴
@@ -96,12 +149,13 @@ DPad OpelationRangeよりも大きめの数値を指定すると、入力が楽�
 ------------------------------------------------------------------------------
 ■パッド、ボタン画像について
 ------------------------------------------------------------------------------
+・（追加）パッド・ボタン画像はシステムフォルダ（img/system）に入れ、
+　拡張子(.png)はすべて小文字にしてください。
+
 ・画像ファイルは任意のサイズで作成可能ですが、縦横比1:1で作成してください。
 　表示の際は、「DPad Size」で指定したpixel数にリサイズされます。
 　ボタン画像も同様です。
 ・方向パッドのグラフィックの中心が画像の中心になるようにしてください。
-
-
 
 @param ---PC Option---
 @default
@@ -110,61 +164,95 @@ DPad OpelationRangeよりも大きめの数値を指定すると、入力が楽�
 @desc PCで実行時も、仮想ボタンを表示する:true しない:false
 初期値:false
 @default false
+@type boolean
 
 @param PC TouchExtend
 @desc PCで実行時も、タッチの操作拡張を有効にする:true しない:false
 初期値:true;
 @default true
+@type boolean
 
 @param ---File Path---
 @default
 
 @param DPad Image
 @desc 方向パッド画像のファイルパス
-@default ./img/system/DirPad.png
+@default DirPad
+@require 1
+@dir img/system/
+@type file
 
 @param ActionBtn Image
 @desc 決定ボタン画像のファイルパス
-@default ./img/system/ActionButton.png
+@default ActionButton
+@require 1
+@dir img/system/
+@type file
 
 @param CancelBtn Image
 @desc キャンセル（メニュー）ボタン画像のファイルパス
-@default ./img/system/CancelButton.png
+@default CancelButton
+@require 1
+@dir img/system/
+@type file
 
 @param ---Button Customize---
 @default
 
 @param Button Opacity
 @desc ボタンの不透明度(0～1) 初期値:0.7
-@default 0.7
+@default 0.700
+@type number
+@max 1.000
+@min 0.000
+@decimals 3
 
 @param Vertical BtnZoom
 @desc スマホ縦持ちで表示したときの全ボタンの拡大率
-初期値:1.7
-@default 1.7
+初期値:1.700
+@default 1.700
+@type number
+@decimals 3
 
 @param Tablet BtnZoom
 @desc タブレット横持ちで表示したときの全ボタンの拡大率
-初期値:0.8
-@default 0.8
+初期値:0.800
+@default 0.800
+@type number
+@decimals 3
 
 @param TabVertical BtnZoom
 @desc タブレット縦持ちで表示したときの全ボタンの拡大率
-初期値:1.1
-@default 1.1
+初期値:1.100
+@default 1.100
+@type number
+@decimals 3
 
 @param HideButton OnMessage
 @desc 画面下部にメッセージ表示時、仮想ボタンの表示順位をゲーム画面の下に下げる:true そのまま:false
 初期値:true
 @default true
+@type boolean
+
+@param HideButton Switch
+@desc この番号のスイッチで仮想ボタンの表示を制御する。0で無効。
+@default 0
+@type number
+
+@param HideButton Switch Value
+@desc 仮想ボタンをスイッチで制御する際に、ONで表示するか(true)OFFで表示するか(false)を設定する。
+@default false
+@type boolean
 
 @param DPad Visible
 @desc 方向パッドを表示する：true しない:false  初期値:true
 @default true
+@type boolean
 
 @param DPad Size
 @desc 方向パッドの大きさ(px）。 初期値:200
 @default 200
+@type number
 
 @param DPad Margin
 @desc 方向パッド画像の位置。画面端からの隙間の大きさで指定。
@@ -175,23 +263,36 @@ DPad OpelationRangeよりも大きめの数値を指定すると、入力が楽�
 @desc 方向パッドの基準位置を、左下以外に変えたい場合。
 left か right; top か bottom で指定。 初期値:left; bottom
 @default left; bottom
+@type select
+@option left; top
+@option left; bottom
+@option right; top
+@option right; bottom
 
 @param DPad OpelationRange
 @desc 方向パッド画像に対する、タッチの作動範囲(倍率、1～)
 画像の外側にタッチ判定を広げ、操作ミスを防ぐ。初期値:1.3
-@default 1.3
+@default 1.300
+@type number
+@decimals 3
 
 @param DPad DiagonalRange
 @desc 方向パッド斜め方向の判定の広さ(0～1)。斜めに入りやすくする程、操作がブレやすくなる。4方向でよい場合は0に。初期値:0.3;
-@default 0.3
+@default 0.300
+@type number
+@max 1.000
+@min 0.000
+@decimals 3
 
 @param ActionBtn Visible
 @desc 決定ボタンを表示する:true しない:false  初期値:true
 @default true
+@type boolean
 
 @param ActionBtn Size
 @desc 決定ボタンの大きさ(px）。 初期値:100
 @default 100
+@type number
 
 @param ActionBtn Margin
 @desc 決定ボタンの位置。画面端からの隙間の大きさで指定。
@@ -202,15 +303,22 @@ left か right; top か bottom で指定。 初期値:left; bottom
 @desc 決定ボタンの基準位置を、右下以外に変えたい場合。
 left か right; top か bottom で指定。 初期値:right; bottom
 @default right; bottom
+@type select
+@option left; top
+@option left; bottom
+@option right; top
+@option right; bottom
 
 @param CancelBtn Visible
 @desc キャンセル（メニュー）ボタンを表示する:true しない:false
 初期値:true
 @default true
+@type boolean
 
 @param CancelBtn Size
 @desc キャンセルボタンの大きさ(px）。 初期値:100
 @default 100
+@type number
 
 @param CancelBtn Margin
 @desc キャンセルボタンの位置。画面端からの隙間の大きさで指定。
@@ -221,7 +329,11 @@ left か right; top か bottom で指定。 初期値:right; bottom
 @desc キャンセルボタンの基準位置を、右下以外に変えたい場合。
 left か right; top か bottomで指定。 初期値:right; bottom
 @default right; bottom
-
+@type select
+@option left; top
+@option left; bottom
+@option right; top
+@option right; bottom
 
 @param ---TouchInput Extend---
 @default 
@@ -230,21 +342,25 @@ left か right; top か bottomで指定。 初期値:right; bottom
 @desc 画面上を左右にフリックすると、PageUp/PageDown操作になる。
 ステータス画面でキャラを切り替えたい時などに。初期値:true
 @default true
+@type boolean
 
 @param HoldCanvas ActionBtn
 @desc 画面を長押しすると、決定ボタンを押した状態になる。
 初期値:true
 @default true
+@type boolean
 
 @param OutCanvas CancelBtn
 @desc ゲーム画面外の黒帯部分全体が、キャンセルボタン扱いになる。
 初期値:false
 @default false
+@type boolean
 
 @param OutCanvas ActionBtn
 @desc ゲーム画面外の黒帯部分全体が、決定ボタン扱いになる。
 初期値:false
 @default false
+@type boolean
 
 @param --!need AnalogMove.js!--
 @default
@@ -253,18 +369,21 @@ left か right; top か bottomで指定。 初期値:right; bottom
 @desc [※AnalogMove.jsを先に読み込んでください]
 方向パッドでアナログ移動ができるようにする。初期値:false
 @default false
+@type boolean
 
 @param Analog Sensitivity
 @desc アナログ移動の入力感度。数値を上げると、細かい指の動きでキャラが大きく動く。
-初期値:1.8
-@default 1.8
+初期値:1.800
+@default 1.800
+@type number
+@decimals 3
 
 */
 
 var Imported = Imported || {};
-Imported.UCHU_MobileOperation = "1.1.4";
+Imported.UCHU_MobileOperation_Modified = "1.2";
 
-var UCHU_MobileOperation = {};
+var UCHU_MobileOperation_Modified = {};
 
 (function() {
     "use strict";
@@ -272,7 +391,7 @@ var UCHU_MobileOperation = {};
 	//-----------------------------------------------------------------------------
 	// Setup
 	
-	var Parameters = PluginManager.parameters('UCHU_MobileOperation');
+	var Parameters = PluginManager.parameters('UCHU_MobileOperation_Modified');
 	var PRM = PRM || {};
 	
 	PRM.url=[];
@@ -283,9 +402,9 @@ var UCHU_MobileOperation = {};
 	
 	PRM.pcBtn = Boolean(Parameters["PC BtnDisplay"] === 'true' || false);
 	PRM.pcExt = Boolean(Parameters["PC TouchExtend"] === 'true' || false);
-	PRM.url[0] = String(Parameters["DPad Image"]);
-	PRM.url[1] = String(Parameters["ActionBtn Image"]);
-	PRM.url[2] = String(Parameters["CancelBtn Image"]);
+	PRM.url[0] = "./img/system/" + String(Parameters["DPad Image"]) + ".png";
+	PRM.url[1] = "./img/system/" + String(Parameters["ActionBtn Image"])+ ".png";
+	PRM.url[2] = "./img/system/" + String(Parameters["CancelBtn Image"])+ ".png";
 	PRM.opacity = Number(Parameters["Button Opacity"]);
 	PRM.vZoom = Number(Parameters["Vertical BtnZoom"]);
 	PRM.tabZoom = Number(Parameters["Tablet BtnZoom"]);
@@ -311,6 +430,9 @@ var UCHU_MobileOperation = {};
 	PRM.outaction = Boolean(Parameters["OutCanvas ActionBtn"] === 'true' || false);
 	PRM.analogmove = Boolean(Parameters["Analog Move"] === 'true' || false);
 	PRM.sensitivity = Number(Parameters["Analog Sensitivity"]);
+	//改変者による機能追加
+	PRM.hideBtnSwitch = Number(Parameters["HideButton Switch"]);
+	PRM.hideBtnSwitchValue = Boolean(Parameters["HideButton Switch Value"] === 'true' || false);
 	
 	var btn_id=["DirPad","ok","escape"];
 	var current_zoom=1;	
@@ -469,7 +591,7 @@ var UCHU_MobileOperation = {};
 			
 	var Scene_Base_start = Scene_Base.prototype.start;
 	Scene_Base.prototype.start = function() {
-		Scene_Base_start.call(this);
+            Scene_Base_start.call(this);
 	    if (Utils.isMobileDevice() || PRM.pcBtn) {
 			if(!Btn_ready){
 				Btn_ready=true;
@@ -478,102 +600,123 @@ var UCHU_MobileOperation = {};
 				if(PRM.visible[2]){this.canselButton = new Locate_Button(2);}
 				Graphics._updateRealScale();
 				document.documentElement.style["-webkit-user-select"]="none";
-				document.addEventListener("touchmove", function(evt) {evt.preventDefault();}, false);
+				document.addEventListener("touchmove", function(evt) {evt.preventDefault();}, {passive: false});
 			}
 		}
 	};
+
+        if(PRM.visible[0] || PRM.visible[1] || PRM.visible[2]){
+            var Game_Temp_setDestination = Game_Temp.prototype.setDestination;
+            Game_Temp.prototype.setDestination = function(x, y) {
+                Game_Temp_setDestination.apply(this, arguments);
+                if(PressBtn){
+                    this._destinationX = null;
+                    this._destinationY = null;
+                }
+            };
 		
-	if(PRM.visible[0] || PRM.visible[1] || PRM.visible[2]){
-	
-		var Game_Temp_setDestination = Game_Temp.prototype.setDestination;
-		Game_Temp.prototype.setDestination = function(x, y) {
-			Game_Temp_setDestination.apply(this, arguments);
-			if(PressBtn){
-				this._destinationX = null;
-				this._destinationY = null;
-			}
-		};
-		
-		var Graphics_updateRealScale = Graphics._updateRealScale;
-		Graphics._updateRealScale = function() {
-			Graphics_updateRealScale.call(this);
-			if (this._stretchEnabled) {
-				if(document.getElementById("Dirpad")){
-				if(window.innerWidth<window.innerHeight){current_zoom=hvzoom[1];}else{current_zoom=hvzoom[0];}
-					pad_size=pad_range*current_zoom/2;
-					if(PRM.visible[0]){
-						document.getElementById("Dirpad").style.zoom=current_zoom;
-						dirx=document.getElementById("Dirpad").offsetLeft*current_zoom;
-						diry=document.getElementById("Dirpad").offsetTop*current_zoom;
-					}
-					if(PRM.visible[1]){document.getElementById("okBtn").style.zoom=current_zoom;}
-					if(PRM.visible[2]){document.getElementById("escapeBtn").style.zoom=current_zoom;}
-				}
-			}
-		};
+            var Graphics_updateRealScale = Graphics._updateRealScale;
+            Graphics._updateRealScale = function() {
+                Graphics_updateRealScale.call(this);
+                if (this._stretchEnabled) {
+                    if(document.getElementById("Dirpad")){
+                    if(window.innerWidth<window.innerHeight){current_zoom=hvzoom[1];}else{current_zoom=hvzoom[0];}
+                    pad_size=pad_range*current_zoom/2;
+                    if(PRM.visible[0]){
+                            document.getElementById("Dirpad").style.zoom=current_zoom;
+                            dirx=document.getElementById("Dirpad").offsetLeft*current_zoom;
+                            diry=document.getElementById("Dirpad").offsetTop*current_zoom;
+                    }
+                    if(PRM.visible[1]){document.getElementById("okBtn").style.zoom=current_zoom;}
+                    if(PRM.visible[2]){document.getElementById("escapeBtn").style.zoom=current_zoom;}
+                    }
+                }
+            };
 	}
 	
 	//-----------------------------------------------------------------------------
 	// Option
+        // UCHU_MobileOperationからの改変が多い箇所
+        
+        //UCHU_MobileOperationの同名メソッドとほぼ同じ
+        Scene_Base.prototype.hideUserInterface = function() {
+            if (Utils.isMobileDevice() || PRM.pcBtn) {
+                Btn_hide = true;
+                //元々のUCHU_MobileOperationの処理
+                if(PRM.visible[0]){document.getElementById("Dirpad").style.zIndex = '0';}
+                if(PRM.visible[1]){document.getElementById("okBtn").style.zIndex = '0';}
+                if(PRM.visible[2]){document.getElementById("escapeBtn").style.zIndex = '0';}
+                if(PRM.hideBtnSwitch != 0){
+                    //透明度をゼロにする処理
+                    if(PRM.visible[0]){document.getElementById("Dirpad").style.opacity = '0';}
+                    if(PRM.visible[1]){document.getElementById("okBtn").style.opacity = '0';}
+                    if(PRM.visible[2]){document.getElementById("escapeBtn").style.opacity = '0';}
+                }
+            }
+        };
+        
+        //UCHU_MobileOperationの同名メソッドとほぼ同じ
+        Scene_Base.prototype.showUserInterface = function() {
+            if (Utils.isMobileDevice() || PRM.pcBtn) {
+                Btn_hide = false;
+                //元々のUCHU_MobileOperationの処理
+                if(PRM.visible[0]){document.getElementById("Dirpad").style.zIndex = '11';}
+                if(PRM.visible[1]){document.getElementById("okBtn").style.zIndex = '11';}
+                if(PRM.visible[2]){document.getElementById("escapeBtn").style.zIndex = '11';}
+                if(PRM.hideBtnSwitch != 0){
+                    //透明度を設定値にする処理
+                    if(PRM.visible[0]){document.getElementById("Dirpad").style.opacity = PRM.opacity;}
+                    if(PRM.visible[1]){document.getElementById("okBtn").style.opacity = PRM.opacity;}
+                    if(PRM.visible[2]){document.getElementById("escapeBtn").style.opacity = PRM.opacity;}                      
+                }
+            }
+        };
 
-	if(PRM.hideBtn){
-		Scene_Base.prototype.hideUserInterface = function() {
-			if (Utils.isMobileDevice() || PRM.pcBtn) {Btn_hide=true;
-				if(PRM.visible[0]){document.getElementById("Dirpad").style.zIndex = '0';}
-				if(PRM.visible[1]){document.getElementById("okBtn").style.zIndex = '0';}
-				if(PRM.visible[2]){document.getElementById("escapeBtn").style.zIndex = '0';}
-			}
-		};
-		Scene_Base.prototype.showUserInterface = function() {
-			if (Utils.isMobileDevice() && !Btn_hide || PRM.pcBtn && !Btn_hide) {
-				if(PRM.visible[0]){document.getElementById("Dirpad").style.zIndex = '11';}
-				if(PRM.visible[1]){document.getElementById("okBtn").style.zIndex = '11';}
-				if(PRM.visible[2]){document.getElementById("escapeBtn").style.zIndex = '11';}
-			}
-		};
-	
-		var Scene_Map_createMessageWindows = Scene_Map.prototype.createMessageWindow;
-		var Scene_Map_processMapTouch = Scene_Map.prototype.processMapTouch;
-		var Scene_Map_terminate = Scene_Map.prototype.terminate;
-		
-		Scene_Map.prototype.createMessageWindow = function() {
-			Scene_Map_createMessageWindows.call(this);
-			var oldStartMessage = this._messageWindow.startMessage;
-			var oldTerminateMessage = this._messageWindow.terminateMessage;
-			var scene = this;
-			
-			this._messageWindow.startMessage = function() {	
-				oldStartMessage.apply(this, arguments);
-				if($gameMessage.positionType()==2){
-					scene.hideUserInterface();
-				}
-			};
-			Window_Message.prototype.terminateMessage = function() {
-				oldTerminateMessage.apply(this, arguments);
-				Btn_hide=false;
-				setTimeout("Scene_Base.prototype.showUserInterface();", 200);
-			};
-		};
-		
-		var Scene_Battle_createMessageWindow = Scene_Battle.prototype.createMessageWindow;
-		Scene_Battle.prototype.createMessageWindow = function() {
-			Scene_Battle_createMessageWindow.call(this);
-			var oldStartMessage = this._messageWindow.startMessage;
-			var oldTerminateMessage = this._messageWindow.terminateMessage;
-			var scene = this;
-			this._messageWindow.startMessage = function() {
-				oldStartMessage.apply(this, arguments);
-				if($gameMessage.positionType()==2){
-					scene.hideUserInterface();
-				}
-			};
-			Window_Message.prototype.terminateMessage = function() {
-				oldTerminateMessage.apply(this, arguments);
-				Btn_hide=false;
-				setTimeout("Scene_Base.prototype.showUserInterface();", 200);
-			};
-		};
-	}
+        //updateMainで表示状態をチェックする
+        var dice2000_Scene_Map_updatemain = Scene_Map.prototype.updateMain;
+        Scene_Map.prototype.updateMain = function() {
+            dice2000_Scene_Map_updatemain.apply(this, arguments);
+            //スイッチ番号が設定されている時
+            if(PRM.hideBtnSwitch != 0){
+                //どの値で表示するかはPRM.hideBtnSwitchValue（真理値）による
+                //非表示状態にする
+                if($gameSwitches.value(PRM.hideBtnSwitch) != PRM.hideBtnSwitchValue){
+                    //表示状態(Btn_hideがfalse)にメソッドを呼び、行き先でBtn_hideをtrueにする
+                    if(!Btn_hide) this.hideUserInterface();
+                //表示状態にする
+                }else{
+                    //非表示状態(Btn_hideがtrue)にメソッドを呼び、行き先でBtn_hideをfalseにする
+                    if(Btn_hide) this.showUserInterface();
+                }
+            //スイッチ番号が設定されておらず、HideButton OnMessageがtrueに設定されている時
+            }else if(PRM.hideBtn){
+                //消去条件：メッセージウィンドウにテキストが存在する時＆スクロールモードでない時＆ウィンドウ位置が下の時
+                //ここの条件式を変えれば消すタイミングは変えられます
+                if($gameMessage.hasText() && !$gameMessage.scrollMode() && $gameMessage.positionType() == 2){
+                    if(!Btn_hide) this.hideUserInterface();
+                }else{
+                    if(Btn_hide) this.showUserInterface();
+                }
+            }
+        };
+
+        var dice2000_Scene_Battle_update = Scene_Battle.prototype.update;
+        Scene_Battle.prototype.update = function() {
+            dice2000_Scene_Battle_update.apply(this, arguments);
+            if(PRM.hideBtnSwitch != 0){
+                if($gameSwitches.value(PRM.hideBtnSwitch) != PRM.hideBtnSwitchValue){
+                    if(!Btn_hide) this.hideUserInterface();
+                }else{
+                    if(Btn_hide) this.showUserInterface();
+                }
+            }else if(PRM.hideBtn){
+                if($gameMessage.hasText() && !$gameMessage.scrollMode() && $gameMessage.positionType() == 2){
+                    if(!Btn_hide) this.hideUserInterface();
+                }else{
+                    if(Btn_hide) this.showUserInterface();
+                }
+            }
+        };
 
 	if(Utils.isMobileDevice() || PRM.pcExt){
 		if(PRM.holdaction){
@@ -653,5 +796,5 @@ var UCHU_MobileOperation = {};
 			return {tilt: tilt, direction: direction};
 		};
 	}
-})(UCHU_MobileOperation);
+})(UCHU_MobileOperation_Modified);
 
