@@ -1,0 +1,10 @@
+[
+null,
+{"id":1,"expanded":true,"name":"マナステージ1","order":2,"parentId":0,"scrollX":1182.5454545454545,"scrollY":676.3636363636364},
+{"id":2,"expanded":false,"name":"ビジネス街","order":1,"parentId":0,"scrollX":1281.6,"scrollY":744},
+{"id":3,"expanded":false,"name":"病院","order":3,"parentId":1,"scrollX":1165.0909090909092,"scrollY":676.3636363636364},
+{"id":4,"expanded":false,"name":"MAP004","order":4,"parentId":0,"scrollX":1300.8,"scrollY":744},
+{"id":5,"expanded":true,"name":"シンプル","order":5,"parentId":0,"scrollX":1300.8,"scrollY":744},
+{"id":6,"expanded":false,"name":"普通の町","order":6,"parentId":5,"scrollX":1281.6,"scrollY":744},
+{"id":7,"expanded":true,"name":"シンプル","order":7,"parentId":5,"scrollX":1300.8,"scrollY":744}
+]
